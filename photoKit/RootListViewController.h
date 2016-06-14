@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PHAsset+Category.h"
+typedef void (^finishSelectBlock)(NSArray* selectedArr);
 @interface RootListViewController : UIViewController
-
+@property (nonatomic,strong)finishSelectBlock finishSelectBlock;
 @end

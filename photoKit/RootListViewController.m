@@ -148,10 +148,10 @@ static NSString * const CollectionCellReuseIdentifier = @"CollectionCell";
     ListVC.assetsFetchResults = assetFetchResult;
     ListVC.assetCollection = assetCollection;
     ListVC.finishSelectBlock = ^(NSArray*selectedAssets){
-        NSLog(@"%@",selectedAssets);
-//        for(PHAsset *asset in selectedAssets){
-//            NSLog(@"%@",[NSNumber numberWithBool:asset.RequestOrigin]);
-//        }
+        if(self.finishSelectBlock){
+            self.finishSelectBlock(selectedAssets);
+        }
+
         [self dismissViewControllerAnimated:YES completion:^{
             
         }];

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "RootListViewController.h"
 #import "Masonry.h"
+
 @import Photos;
 
 
@@ -39,7 +40,12 @@
 -(void)showPhoto{
     RootListViewController *rootVC = [[RootListViewController alloc] init];
     UINavigationController*nav = [[UINavigationController alloc] initWithRootViewController:rootVC];
-    
+    rootVC.finishSelectBlock = ^(NSArray*selectedAssets){
+                NSLog(@"%@",selectedAssets);
+                for(PHAsset *asset in selectedAssets){
+                    NSLog(@"%@",[NSNumber numberWithBool:asset.RequestOrigin]);
+                }
+    };
     [self presentViewController:nav animated:YES completion:^{
         
     }];
